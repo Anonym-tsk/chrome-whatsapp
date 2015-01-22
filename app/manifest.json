@@ -5,11 +5,14 @@
     "manifest_version": 2,
     "default_locale": "en",
     "app": {
-        "launch": {
-            "web_url": "http://whatsapp.css3.su/"
-        },
-        "urls": [ "http://whatsapp.css3.su/" ]
+        "background": {
+            "scripts": [ "scripts/background.js" ]
+        }
     },
+    "permissions": [
+        "webview",
+        "https://web.whatsapp.com/"
+    ],
     "icons": {
         "16": "images/16.png",
         "19": "images/19.png",
