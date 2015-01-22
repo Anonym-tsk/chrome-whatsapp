@@ -73,6 +73,49 @@ module.exports = function(grunt) {
             ]
         },
 
+        // Compiles Sass to CSS and generates necessary files if requested
+        sass: {
+            options: {
+                style: 'compressed',
+                sourcemap: 'none'
+            },
+            debug: {
+                options: {
+                    style: 'expanded',
+                    update: true
+                },
+                files: [{
+                    expand: true,
+                    cwd: '<%= config.path.app %>/styles',
+                    src: ['*.sass'],
+                    dest: '<%= config.path.app %>/styles',
+                    ext: '.css'
+                }]
+            },
+            expanded: {
+                options: {
+                    style: 'expanded',
+                    sourcemap: 'none'
+                },
+                files: [{
+                    expand: true,
+                    cwd: '<%= config.path.app %>/styles',
+                    src: ['*.sass'],
+                    dest: '<%= config.path.dist %>/styles',
+                    ext: '.css'
+                }]
+            },
+            compressed: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= config.path.app %>/styles',
+                    src: ['*.sass'],
+                    dest: '<%= config.path.dist %>/styles',
+                    ext: '.css'
+                }]
+            }
+        },
+
         // The following *-min tasks produce minifies files in the dist folder
         imagemin: {
             dist: {
@@ -85,9 +128,41 @@ module.exports = function(grunt) {
             }
         },
 
+        // Minify html
+        htmlmin: {
+            dist: {
+                options: {
+                    removeCommentsFromCDATA: true,
+                    collapseWhitespace: true,
+                    collapseBooleanAttributes: true,
+                    removeEmptyAttributes: true
+                },
+                files: [{
+                    expand: true,
+                    cwd: '<%= config.path.app %>',
+                    src: '*.html',
+                    dest: '<%= config.path.dist %>'
+                }]
+            }
+        },
+
+        // Minify scripts
+        uglify: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= config.path.app %>/scripts',
+                    src: [
+                        '{,*/}*.js'
+                    ],
+                    dest: '<%= config.path.dist %>/scripts'
+                }]
+            }
+        },
+
         // Copies remaining files to places other tasks can use
         copy: {
-            dist: {
+            assets: {
                 files: [{
                     expand: true,
                     dot: true,
@@ -96,6 +171,26 @@ module.exports = function(grunt) {
                     src: [
                         '_locales/{,*/}*.json',
                         'manifest.json'
+                    ]
+                }]
+            },
+            html: {
+                files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: '<%= config.path.app %>',
+                    dest: '<%= config.path.dist %>',
+                    src: '*.html'
+                }]
+            },
+            js: {
+                files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: '<%= config.path.app %>/scripts',
+                    dest: '<%= config.path.dist %>/scripts',
+                    src: [
+                        '{,*/}*.js'
                     ]
                 }]
             }
@@ -177,8 +272,11 @@ module.exports = function(grunt) {
     grunt.registerTask('build-chrome', [
         'jshint',
         'clean',
+        'sass:compressed',
         'imagemin',
-        'copy',
+        'htmlmin',
+        'uglify',
+        'copy:assets',
         'check',
         'compress:chrome'
     ]);
@@ -186,8 +284,11 @@ module.exports = function(grunt) {
     grunt.registerTask('build-opera', [
         'jshint',
         'clean',
+        'sass:expanded',
         'imagemin',
-        'copy',
+        'copy:html',
+        'copy:js',
+        'copy:assets',
         'check',
         'compress:opera'
     ]);
