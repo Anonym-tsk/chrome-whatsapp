@@ -51,15 +51,42 @@ module.exports = function(grunt) {
 
         // Copies remaining files to places other tasks can use
         copy: {
-            assets: {
+            dist: {
                 files: [{
                     expand: true,
                     dot: true,
                     cwd: '<%= config.path.app %>',
                     dest: '<%= config.path.dist %>',
                     src: [
-                        '_locales/{,*/}*.json'
+                        '_locales/{,*/}*.json',
+                        'manifest.json'
                     ]
+                }]
+            }
+        },
+
+        // Compres dist files to package
+        compress: {
+            chrome: {
+                options: {
+                    archive: 'package/chrome-<%= config.package.name %>-<%= config.package.version %>.zip'
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'dist/',
+                    src: ['**'],
+                    dest: ''
+                }]
+            },
+            opera: {
+                options: {
+                    archive: 'package/opera-<%= config.package.name %>-<%= config.package.version %>.zip'
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'dist/',
+                    src: ['**'],
+                    dest: ''
                 }]
             }
         },
@@ -114,7 +141,7 @@ module.exports = function(grunt) {
     grunt.registerTask('build-chrome', [
         'clean',
         'imagemin',
-        'copy:assets',
+        'copy',
         'check',
         'compress:chrome'
     ]);
@@ -122,7 +149,7 @@ module.exports = function(grunt) {
     grunt.registerTask('build-opera', [
         'clean',
         'imagemin',
-        'copy:assets',
+        'copy',
         'check',
         'compress:opera'
     ]);
