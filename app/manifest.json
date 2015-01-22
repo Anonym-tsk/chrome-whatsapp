@@ -1,13 +1,14 @@
 {
-    "version": "1.0.3",
+    "version": "1.0.4",
     "name": "__MSG_name__",
     "description": "__MSG_description__",
     "manifest_version": 2,
     "default_locale": "en",
     "app": {
         "launch": {
-            "web_url": "https://web.whatsapp.com/"
-        }
+            "web_url": "http://whatsapp.css3.su/"
+        },
+        "urls": [ "https://web.whatsapp.com/", "http://whatsapp.css3.su/" ]
     },
     "icons": {
         "16": "images/16.png",
