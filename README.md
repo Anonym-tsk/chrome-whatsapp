@@ -1,15 +1,10 @@
 Chrome WhatsApp
 ======
 
-#####_Дополнение для браузеров на основе Chromium (Google Chrome, Opera, Яндекс.Браузер и др.)_
-
-###Описание
+#####_Дополнение для Google Chrome_
 
 ###Как установить
-* TODO
-
-###Основные планы
-* TODO
+* [Chrome Web Store](https://chrome.google.com/webstore/detail/whatsapp/cebcbiddpikadcfodbjihffmddoohdma)
 
 ======
 
