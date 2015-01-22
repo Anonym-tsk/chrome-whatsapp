@@ -96,13 +96,13 @@ module.exports = function(grunt) {
             options: {
                 files: ['package.json', '<%= config.path.app %>/manifest.json'],
                 updateConfigs: ['config.package', 'config.manifest'],
-                commit: false, // TODO
+                commit: true,
                 commitMessage: 'Release %VERSION%',
                 commitFiles: ['package.json', '<%= config.path.app %>/manifest.json'],
                 createTag: true,
                 tagName: '%VERSION%',
                 tagMessage: 'Version %VERSION%',
-                push: false, // TODO
+                push: true,
                 pushTo: 'origin',
                 gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d',
                 globalReplace: false
