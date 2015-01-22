@@ -1,5 +1,5 @@
 {
-    "version": "1.0.4",
+    "version": "1.0.5",
     "name": "__MSG_name__",
     "description": "__MSG_description__",
     "manifest_version": 2,
@@ -8,7 +8,7 @@
         "launch": {
             "web_url": "http://whatsapp.css3.su/"
         },
-        "urls": [ "https://web.whatsapp.com/", "http://whatsapp.css3.su/" ]
+        "urls": [ "http://whatsapp.css3.su/" ]
     },
     "icons": {
         "16": "images/16.png",
