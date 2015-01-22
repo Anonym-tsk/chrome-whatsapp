@@ -9,5 +9,13 @@
     "images/128.png",
     "images/256.png",
 
+    "scripts/background.js",
+    "scripts/external.js",
+    "scripts/index.js",
+
+    "styles/style.css",
+
+    "index.html",
+
     "manifest.json"
 ]

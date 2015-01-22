@@ -37,6 +37,42 @@ module.exports = function(grunt) {
             }
         },
 
+        // Make sure code styles are up to par and there are no obvious mistakes
+        jshint: {
+            options: {
+                node: true,
+                browser: true,
+                esnext: true,
+                bitwise: true,
+                camelcase: true,
+                curly: true,
+                eqeqeq: true,
+                immed: true,
+                indent: 4,
+                latedef: true,
+                newcap: true,
+                noarg: true,
+                quotmark: 'single',
+                regexp: true,
+                undef: true,
+                unused: true,
+                strict: true,
+                trailing: true,
+                smarttabs: true,
+                validthis: true,
+                globals: {
+                    chrome: true,
+                    opr: true,
+                    define: true
+                },
+                reporter: require('jshint-stylish')
+            },
+            all: [
+                'Gruntfile.js',
+                '<%= config.path.app %>/scripts/{,*/}*.js'
+            ]
+        },
+
         // The following *-min tasks produce minifies files in the dist folder
         imagemin: {
             dist: {
@@ -139,6 +175,7 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('build-chrome', [
+        'jshint',
         'clean',
         'imagemin',
         'copy',
@@ -147,6 +184,7 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask('build-opera', [
+        'jshint',
         'clean',
         'imagemin',
         'copy',
