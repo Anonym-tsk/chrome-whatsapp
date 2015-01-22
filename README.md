@@ -1,4 +1,4 @@
-Chrome Whatsapp
+Chrome WhatsApp
 ======
 
 #####_Дополнение для браузеров на основе Chromium (Google Chrome, Opera, Яндекс.Браузер и др.)_
