@@ -24,6 +24,60 @@ module.exports = function(grunt) {
             manifest: grunt.file.readJSON('app/manifest.json')
         },
 
+        // Watches files for changes and runs tasks based on the changed files
+        watch: {
+            js: {
+                files: ['<%= config.path.app %>/scripts/{,*/}*.js'],
+                tasks: ['jshint'],
+                options: {
+                    livereload: true
+                }
+            },
+            sass: {
+                files: ['<%= config.path.app %>/styles/{,*/}*.{scss,sass}'],
+                tasks: ['sass:debug']
+            },
+            gruntfile: {
+                files: ['Gruntfile.js']
+            },
+            styles: {
+                files: ['<%= config.path.app %>/styles/{,*/}*.css'],
+                tasks: [],
+                options: {
+                    livereload: true
+                }
+            },
+            livereload: {
+                options: {
+                    livereload: '<%= connect.options.livereload %>'
+                },
+                files: [
+                    '<%= config.path.app %>/*.html',
+                    '<%= config.path.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+                    '<%= config.path.app %>/manifest.json',
+                    '<%= config.path.app %>/_locales/{,*/}*.json'
+                ]
+            }
+        },
+
+        // Grunt server and debug server setting
+        connect: {
+            options: {
+                port: 9000,
+                livereload: 35729,
+                // change this to '0.0.0.0' to access the server from outside
+                hostname: 'localhost'
+            },
+            debug: {
+                options: {
+                    open: false,
+                    base: [
+                        '<%= config.path.app %>'
+                    ]
+                }
+            }
+        },
+
         // Empties folders to start fresh
         clean: {
             dist: {
@@ -268,6 +322,13 @@ module.exports = function(grunt) {
         }
         return result;
     });
+
+    grunt.registerTask('debug', [
+        'jshint',
+        'sass:debug',
+        'connect:debug',
+        'watch'
+    ]);
 
     grunt.registerTask('build-chrome', [
         'jshint',
