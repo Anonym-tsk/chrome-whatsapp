@@ -2,5 +2,7 @@ node_modules
 temp
 .tmp
 dist
+.sass-cache
+app/styles/*.css
 package
 .idea
