@@ -16,4 +16,19 @@ document.addEventListener('DOMContentLoaded', function() {
     webview.addEventListener('contentload', function() {
         webview.executeScript({file: 'scripts/external.js'});
     });
+
+    webview.addEventListener('permissionrequest', function(e) {
+        switch (e.permission) {
+            case 'media':
+            case 'geolocation':
+                e.request.allow();
+                break;
+        }
+    });
+
+    webview.addEventListener('newwindow', function(e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        window.open(e.targetUrl);
+    });
 });

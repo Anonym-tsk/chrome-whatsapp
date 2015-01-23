@@ -4,9 +4,7 @@ chrome.app.runtime.onLaunched.addListener(function() {
         id: 'whatsapp',
         innerBounds: {
             width: 900,
-            height: 720,
-            minWidth: 800,
-            minHeight: 640
+            height: 720
         },
         frame: 'chrome',
         resizable: false
