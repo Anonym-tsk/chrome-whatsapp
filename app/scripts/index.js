@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     webview.addEventListener('permissionrequest', function(e) {
         switch (e.permission) {
             case 'media':
+            case 'filesystem':
             case 'geolocation':
                 e.request.allow();
                 break;

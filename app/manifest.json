@@ -15,6 +15,7 @@
         "audioCapture",
         "videoCapture",
         "notifications",
+        "fileSystem",
         "webview"
     ],
     "icons": {
