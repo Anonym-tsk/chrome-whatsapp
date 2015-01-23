@@ -5,9 +5,9 @@
     "images/16.png",
     "images/19.png",
     "images/38.png",
-    "images/48.png",
     "images/128.png",
     "images/256.png",
+    "images/512.png",
 
     "scripts/background.js",
     "scripts/external.js",
