@@ -48,4 +48,8 @@
         });
     });
     observer.observe(document, {subtree: true, childList: true});
+
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
 })();
