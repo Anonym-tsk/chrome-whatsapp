@@ -9,6 +9,7 @@
         };
         app.addEventListener('animationend', listener);
         app.addEventListener('webkitAnimationEnd', listener);
+        app.style.borderRadius = '0';
     }
 
     function removeMic() {
