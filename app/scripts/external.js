@@ -12,15 +12,6 @@
         app.style.borderRadius = '0';
     }
 
-    function removeMic() {
-        var footer = document.querySelector('.block-compose'),
-            divs = footer && footer.querySelectorAll('div');
-        if (divs) {
-            footer.style.paddingRight = '10px';
-            divs[divs.length - 1].style.display = 'none';
-        }
-    }
-
     var observer = new MutationObserver(function(mutationRecords) {
         Array.prototype.forEach.call(mutationRecords, function(record) {
             Array.prototype.forEach.call(record.addedNodes, function(node) {
@@ -29,19 +20,7 @@
                     // Ready main app
                     if (classList.contains('app')) {
                         init(node);
-                    }
-                    // Ready chat
-                    if (classList.contains('pane-chat')) {
-                        removeMic();
-                    }
-                }
-            });
-            Array.prototype.forEach.call(record.removedNodes, function(node) {
-                var classList = node.classList;
-                if (classList) {
-                    if (classList.contains('icon-send')) {
-                        // Removed text in textarea
-                        removeMic();
+                        observer.disconnect();
                     }
                 }
             });
@@ -52,4 +31,6 @@
     document.addEventListener('contextmenu', function(e) {
         e.preventDefault();
     });
+
+    document.querySelector('html').style.overflow = 'hidden';
 })();
