@@ -1,10 +1,10 @@
-Chrome WhatsApp
+Chrome WhatsWeb
 ======
 
 #####_Дополнение для Google Chrome_
 
 ###Как установить
-* [Chrome Web Store](https://chrome.google.com/webstore/detail/whatsapp/cebcbiddpikadcfodbjihffmddoohdma)
+* [Chrome Web Store](https://chrome.google.com/webstore/detail/whatsweb/cebcbiddpikadcfodbjihffmddoohdma)
 
 ======
 
