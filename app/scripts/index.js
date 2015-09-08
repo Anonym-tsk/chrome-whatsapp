@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     webview.addEventListener('contentload', function() {
         webview.executeScript({file: 'scripts/external.js'});
+        webview.insertCSS({
+            code: '.butterbar-notification {  display: none !important; }'
+        });
     });
 
     webview.addEventListener('permissionrequest', function(e) {
