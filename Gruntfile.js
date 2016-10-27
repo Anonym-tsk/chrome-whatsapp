@@ -146,19 +146,6 @@ module.exports = function(grunt) {
                     ext: '.css'
                 }]
             },
-            expanded: {
-                options: {
-                    style: 'expanded',
-                    sourcemap: 'none'
-                },
-                files: [{
-                    expand: true,
-                    cwd: '<%= config.path.app %>/styles',
-                    src: ['*.sass'],
-                    dest: '<%= config.path.dist %>/styles',
-                    ext: '.css'
-                }]
-            },
             compressed: {
                 files: [{
                     expand: true,
@@ -166,36 +153,6 @@ module.exports = function(grunt) {
                     src: ['*.sass'],
                     dest: '<%= config.path.dist %>/styles',
                     ext: '.css'
-                }]
-            }
-        },
-
-        // The following *-min tasks produce minifies files in the dist folder
-        imagemin: {
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: '<%= config.path.app %>/images',
-                    src: '{,*/}*.{gif,jpeg,jpg,png}',
-                    dest: '<%= config.path.dist %>/images'
-                }]
-            }
-        },
-
-        // Minify html
-        htmlmin: {
-            dist: {
-                options: {
-                    removeCommentsFromCDATA: true,
-                    collapseWhitespace: true,
-                    collapseBooleanAttributes: true,
-                    removeEmptyAttributes: true
-                },
-                files: [{
-                    expand: true,
-                    cwd: '<%= config.path.app %>',
-                    src: '*.html',
-                    dest: '<%= config.path.dist %>'
                 }]
             }
         },
@@ -224,27 +181,9 @@ module.exports = function(grunt) {
                     dest: '<%= config.path.dist %>',
                     src: [
                         '_locales/{,*/}*.json',
-                        'manifest.json'
-                    ]
-                }]
-            },
-            html: {
-                files: [{
-                    expand: true,
-                    dot: true,
-                    cwd: '<%= config.path.app %>',
-                    dest: '<%= config.path.dist %>',
-                    src: '*.html'
-                }]
-            },
-            js: {
-                files: [{
-                    expand: true,
-                    dot: true,
-                    cwd: '<%= config.path.app %>/scripts',
-                    dest: '<%= config.path.dist %>/scripts',
-                    src: [
-                        '{,*/}*.js'
+                        'manifest.json',
+                        'images/{,*/}*.{gif,jpeg,jpg,png}',
+                        'index.html'
                     ]
                 }]
             }
@@ -255,17 +194,6 @@ module.exports = function(grunt) {
             chrome: {
                 options: {
                     archive: 'package/chrome-<%= config.package.name %>-<%= config.package.version %>.zip'
-                },
-                files: [{
-                    expand: true,
-                    cwd: 'dist/',
-                    src: ['**'],
-                    dest: ''
-                }]
-            },
-            opera: {
-                options: {
-                    archive: 'package/opera-<%= config.package.name %>-<%= config.package.version %>.zip'
                 },
                 files: [{
                     expand: true,
@@ -302,31 +230,13 @@ module.exports = function(grunt) {
         'watch'
     ]);
 
-    grunt.registerTask('build-chrome', [
+    grunt.registerTask('build', [
         'jshint',
         'clean',
         'sass:compressed',
-        'imagemin',
-        'htmlmin',
         'uglify',
         'copy:assets',
         'compress:chrome'
-    ]);
-
-    grunt.registerTask('build-opera', [
-        'jshint',
-        'clean',
-        'sass:expanded',
-        'imagemin',
-        'copy:html',
-        'copy:js',
-        'copy:assets',
-        'compress:opera'
-    ]);
-
-    grunt.registerTask('build', [
-        'build-chrome',
-        'build-opera'
     ]);
 
     grunt.registerTask('release', [

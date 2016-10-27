@@ -1,23 +1,27 @@
 {
     "name": "okmessages",
     "version": "1.0.1",
-    "dependencies": {},
+    "author": "ok.ru",
+    "license": "UNLICENSED",
+    "private": true,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Anonym-tsk/chrome-whatsapp.git#okmessages"
+    },
     "devDependencies": {
-        "grunt": "^0.4.1",
-        "grunt-bump": "^0.0.16",
-        "grunt-contrib-clean": "^0.5.0",
-        "grunt-contrib-compress": "^0.12.0",
-        "grunt-contrib-copy": "^0.5.0",
-        "grunt-contrib-htmlmin": "^0.2.0",
-        "grunt-contrib-imagemin": "^0.7.1",
-        "grunt-contrib-uglify": "^0.4.0",
-        "grunt-contrib-jshint": "^0.9.2",
-        "grunt-contrib-sass": "^0.8.1",
-        "grunt-contrib-connect": "^0.7.1",
-        "grunt-contrib-watch": "^0.6.1",
-        "jshint-stylish": "^0.1.5",
-        "load-grunt-tasks": "^0.4.0",
-        "time-grunt": "^0.3.1"
+        "grunt": "^1.0.1",
+        "grunt-bump": "^0.8.0",
+        "grunt-contrib-clean": "^1.0.0",
+        "grunt-contrib-compress": "^1.3.0",
+        "grunt-contrib-copy": "^1.0.0",
+        "grunt-contrib-uglify": "^2.0.0",
+        "grunt-contrib-jshint": "^1.0.0",
+        "grunt-contrib-sass": "^1.0.0",
+        "grunt-contrib-connect": "^0.11.2",
+        "grunt-contrib-watch": "^1.0.0",
+        "jshint-stylish": "^2.2.1",
+        "load-grunt-tasks": "^3.5.2",
+        "time-grunt": "^1.4.0"
     },
     "engines": {
         "node": ">=0.8.0"
