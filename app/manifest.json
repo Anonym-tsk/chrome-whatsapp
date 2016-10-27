@@ -1,5 +1,5 @@
 {
-    "version": "1.0.12",
+    "version": "1.0.1",
     "name": "__MSG_name__",
     "short_name": "__MSG_name__",
     "description": "__MSG_description__",
@@ -23,7 +23,6 @@
         "19": "images/19.png",
         "38": "images/38.png",
         "128": "images/128.png",
-        "256": "images/256.png",
-        "512": "images/512.png"
+        "256": "images/256.png"
     }
 }

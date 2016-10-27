@@ -1,6 +1,6 @@
 {
-    "name": "whatsweb",
-    "version": "1.0.12",
+    "name": "okmessages",
+    "version": "1.0.1",
     "dependencies": {},
     "devDependencies": {
         "grunt": "^0.4.1",
