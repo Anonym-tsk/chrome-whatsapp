@@ -1,6 +1,7 @@
 'use strict';
 document.addEventListener('DOMContentLoaded', function() {
-    var webview = document.querySelector('webview');
+    var webview = document.querySelector('webview'),
+        loader = document.querySelector('.loader');
 
     // webview.addEventListener('consolemessage', function(e) {
     //     switch (e.message) {
@@ -17,12 +18,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.isTopLevel) {
             webview.executeScript({file: 'scripts/external.js'});
             webview.insertCSS({file: 'styles/external.css'});
-            webview.style.width = '0';
         }
     });
 
-    webview.addEventListener('contentload', function(e) {
+    webview.addEventListener('contentload', function() {
         webview.style.width = '100%';
+        loader.style.display = 'none';
     });
 
     webview.addEventListener('permissionrequest', function(e) {
