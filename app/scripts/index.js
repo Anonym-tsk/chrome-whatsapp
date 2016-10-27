@@ -13,9 +13,16 @@ document.addEventListener('DOMContentLoaded', function() {
     //     }
     // });
 
-    webview.addEventListener('contentload', function() {
-        webview.executeScript({file: 'scripts/external.js'});
-        webview.insertCSS({file: 'styles/external.css'});
+    webview.addEventListener('loadstart', function(e) {
+        if (e.isTopLevel) {
+            webview.executeScript({file: 'scripts/external.js'});
+            webview.insertCSS({file: 'styles/external.css'});
+            webview.style.width = '0';
+        }
+    });
+
+    webview.addEventListener('contentload', function(e) {
+        webview.style.width = '100%';
     });
 
     webview.addEventListener('permissionrequest', function(e) {
