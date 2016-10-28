@@ -27,6 +27,10 @@ document.addEventListener('DOMContentLoaded', function() {
         window.open(e.targetUrl);
     });
 
+    chrome.app.window.current().contentWindow.addEventListener('focus', function() {
+        chrome.app.window.current().clearAttention();
+    });
+
     chrome.runtime.onConnect.addListener(function(port) {
         port.onMessage.addListener(function(message) {
             if (message.type === 'proxy' && message.action) {
