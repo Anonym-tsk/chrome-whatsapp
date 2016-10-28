@@ -3,14 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
     var webview = document.querySelector('webview'),
         loader = document.querySelector('.loader');
 
-    webview.addEventListener('loadstart', function(e) {
-        if (e.isTopLevel) {
-            webview.executeScript({file: 'scripts/external.js'});
-            webview.insertCSS({file: 'styles/external.css'});
-        }
-    });
-
     webview.addEventListener('contentload', function() {
+        webview.executeScript({file: 'scripts/external.js'});
+        webview.insertCSS({file: 'styles/external.css'});
+
         webview.style.width = '100%';
         loader.style.display = 'none';
     });
