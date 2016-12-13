@@ -1,7 +1,8 @@
 'use strict';
 document.addEventListener('DOMContentLoaded', function() {
     var webview = document.querySelector('webview'),
-        loader = document.querySelector('.loader');
+        loader = document.querySelector('.loader'),
+        isFocused = true;
 
     webview.addEventListener('contentload', function() {
         webview.executeScript({file: 'scripts/external.js'});
@@ -29,6 +30,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     chrome.app.window.current().contentWindow.addEventListener('focus', function() {
         chrome.app.window.current().clearAttention();
+        isFocused = true;
+    });
+
+    chrome.app.window.current().contentWindow.addEventListener('blur', function() {
+        isFocused = false;
     });
 
     chrome.runtime.onConnect.addListener(function(port) {
@@ -36,7 +42,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (message.type === 'proxy' && message.action) {
                 switch (message.action) {
                     case 'attention':
-                        chrome.app.window.current().drawAttention();
+                        if (!isFocused) {
+                            chrome.app.window.current().drawAttention();
+                        }
                         break;
 
                     case 'notification':
