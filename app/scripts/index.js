@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
             case 'media':
             case 'filesystem':
             case 'geolocation':
+            case 'fullscreen':
                 e.request.allow();
                 break;
         }

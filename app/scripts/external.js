@@ -53,13 +53,4 @@
         });
     });
     observer.observe(document, {subtree: true, childList: true});
-
-    // Запрещаем закрытие по ESC
-    document.body.addEventListener('keydown', function(e) {
-        if (e.which === 27) {
-            e.preventDefault();
-            e.stopPropagation();
-            e.stopImmediatePropagation();
-        }
-    });
 })();
