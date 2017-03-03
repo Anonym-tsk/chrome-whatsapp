@@ -6,7 +6,8 @@ chrome.app.runtime.onLaunched.addListener(function() {
             width: 900,
             height: 700,
             minWidth: 885,
-            minHeight: 450
+            minHeight: 450,
+            maxWidth: 1200
         },
         frame: 'chrome',
         resizable: true
